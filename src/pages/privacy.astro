@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import { SUPPORT_EMAIL } from '../lib/url';
+---
+
+<Base
+  title="Privacy Policy — Hey Camera"
+  description="The Hey Camera privacy policy."
+>
+  <section class="mx-auto max-w-2xl px-5 py-20">
+    <h1 class="text-4xl font-bold tracking-tight">Privacy Policy</h1>
+
+    <div
+      class="mt-8 space-y-5 text-muted [&_h2]:mt-12 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-body"
+    >
+      <p>
+        Hey Camera is a free app. This SERVICE is provided at no cost and is
+        intended for use as is.
+      </p>
+      <p>
+        This page is used to inform visitors regarding our policies with the
+        collection, use, and disclosure of Personal Information if anyone decided
+        to use our Service.
+      </p>
+      <p>
+        If you choose to use our Service, then you agree to the collection and use
+        of information in relation to this policy. The Information that we collect
+        is used for providing and improving the Service. We will not use or share
+        your information with anyone except as described in this Privacy Policy.
+      </p>
+      <p>
+        The terms used in this Privacy Policy have the same meanings as in our
+        Terms and Conditions.
+      </p>
+
+      <h2>Information Collection and Use</h2>
+      <p>This application does not collect personally identifiable information.</p>
+
+      <h2>Log Data</h2>
+      <p>
+        We want to inform you that whenever you use our Service, in a case of an
+        error in the app we collect data and information (through third party
+        products) on your phone called Log Data. This Log Data may include
+        information such as your device Internet Protocol (&ldquo;IP&rdquo;)
+        address, device name, operating system version, the configuration of the
+        app when utilizing our Service, the time and date of your use of the
+        Service, and other statistics.
+      </p>
+
+      <h2>Security</h2>
+      <p>
+        We value your trust in providing us your Personal Information, thus we are
+        striving to use commercially acceptable means of protecting it. But
+        remember that no method of transmission over the internet, or method of
+        electronic storage is 100% secure and reliable, and we cannot guarantee
+        its absolute security.
+      </p>
+
+      <h2>Changes to This Privacy Policy</h2>
+      <p>
+        We may update our Privacy Policy from time to time. Thus, you are advised
+        to review this page periodically for any changes. We will notify you of
+        any changes by posting the new Privacy Policy on this page. These changes
+        are effective immediately after they are posted on this page.
+      </p>
+
+      <h2>Contact Us</h2>
+      <p>
+        If you have any questions or suggestions about our Privacy Policy, do not
+        hesitate to contact us via email at <a
+          href={`mailto:${SUPPORT_EMAIL}`}
+          class="text-accent-soft underline underline-offset-4 hover:text-body"
+          >{SUPPORT_EMAIL}</a
+        >
+      </p>
+    </div>
+  </section>
+</Base>

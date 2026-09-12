@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase, APP_STORE_URL, SUPPORT_EMAIL } from '../lib/url';
+---
+
+<Base
+  title="Support — Hey Camera"
+  description="Get help with Hey Camera. Email heycamera.app@gmail.com with questions, bug reports or feedback."
+>
+  <section class="mx-auto max-w-2xl px-5 py-20">
+    <h1 class="text-4xl font-bold tracking-tight">Support</h1>
+    <p class="mt-5 text-lg text-muted">
+      Questions, bug reports and feature requests all go to the same address.
+    </p>
+
+    <a
+      href={`mailto:${SUPPORT_EMAIL}?subject=Hey%20Camera%20Support`}
+      class="mt-9 flex flex-col items-center gap-2 rounded-2xl border border-edge bg-surface px-6 py-8 text-center transition hover:border-accent"
+    >
+      <span class="text-sm uppercase tracking-[0.18em] text-muted">Email</span>
+      <span class="break-all text-xl font-semibold text-accent-soft sm:text-2xl">
+        {SUPPORT_EMAIL}
+      </span>
+    </a>
+
+    <h2 class="mt-14 text-xl font-semibold">Reporting a problem</h2>
+    <p class="mt-4 text-muted">
+      If something isn't working, including these makes it far quicker to fix:
+    </p>
+    <ul class="mt-4 space-y-2 text-muted">
+      <li>— Your iPhone model and iOS version</li>
+      <li>— The Hey Camera version, shown at the bottom of Settings</li>
+      <li>— What you did, and what happened instead</li>
+    </ul>
+
+    <h2 class="mt-14 text-xl font-semibold">Subscriptions and purchases</h2>
+    <p class="mt-4 text-muted">
+      Hey Camera Pro is available as an annual subscription or a one-time
+      lifetime purchase. Subscriptions renew automatically unless canceled at
+      least 24 hours before the end of the current period. You can view, change
+      or cancel a subscription at any time in your Apple Account settings —
+      Apple handles all billing, so refunds are requested through them.
+    </p>
+
+    <h2 class="mt-14 text-xl font-semibold">Privacy</h2>
+    <p class="mt-4 text-muted">
+      Speech recognition runs on your device. See the <a
+        href={withBase('/privacy')}
+        class="text-accent-soft underline underline-offset-4 hover:text-body"
+      >privacy policy</a> for details.
+    </p>
+
+    <p class="mt-14 text-sm text-muted">
+      <a href={APP_STORE_URL} class="underline underline-offset-4 hover:text-body"
+        >Hey Camera on the App Store</a
+      >
+    </p>
+  </section>
+</Base>
