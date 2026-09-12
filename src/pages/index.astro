@@ -1,0 +1,257 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import { withBase } from '../lib/url';
+import icon from '../assets/icon.png';
+import shotVoice from '../assets/screenshots/01-voice.png';
+import shotGesture from '../assets/screenshots/02-gesture.png';
+import shotCommands from '../assets/screenshots/03-voice-commands.png';
+import shotVideo from '../assets/screenshots/04-video-settings.png';
+import shotLibrary from '../assets/screenshots/05-library.png';
+
+const cameraFeatures = [
+  {
+    title: '4K at 60 FPS',
+    body: '4K, 1080p and 720p, at up to 60 frames per second.',
+  },
+  {
+    title: 'HDR photo and video',
+    body: 'On every device that supports it, switched on from Settings.',
+  },
+  {
+    title: 'Video stabilization',
+    body: 'From light smoothing to full cinematic, each mode explained before you pick it.',
+  },
+  {
+    title: 'Choose your lens',
+    body: 'Pick which camera each side opens with — including the combined camera that puts 0.5× ultra-wide in reach.',
+  },
+  {
+    title: 'Self-timer',
+    body: 'With an optional flashing countdown so you know exactly when it fires.',
+  },
+  {
+    title: 'Full manual control',
+    body: 'Pinch to zoom, tap to focus, and exposure control that stays where you put it.',
+  },
+  {
+    title: 'Torch confirmation',
+    body: 'See a command land from across the room, without walking back to the phone.',
+  },
+  {
+    title: 'Built for shooting',
+    body: 'Volume-button shutter, and the screen stays awake while you work.',
+  },
+];
+---
+
+<Base
+  title="Hey Camera — the hands-free camera for iPhone"
+  description="Control your iPhone camera with your voice or a hand gesture. On-device speech recognition, palm-gesture capture, 4K60, HDR and full manual control."
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-x-0 -top-40 h-[420px] bg-[radial-gradient(ellipse_at_top,rgba(118,153,208,0.22),transparent_65%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-5xl px-5 pt-16 pb-20 text-center sm:pt-24">
+      <Image
+        src={icon}
+        alt="Hey Camera app icon"
+        width={104}
+        height={104}
+        densities={[2, 3]}
+        loading="eager"
+        fetchpriority="high"
+        class="mx-auto rounded-[23px] shadow-2xl shadow-black/50"
+      />
+
+      <h1
+        class="mx-auto mt-8 max-w-3xl text-balance text-4xl font-bold tracking-tight sm:text-6xl"
+      >
+        The <span class="whitespace-nowrap">hands-free</span> camera
+      </h1>
+
+      <p class="mx-auto mt-5 max-w-xl text-balance text-lg text-muted sm:text-xl">
+        Control it with your voice or a simple hand gesture. No tapping, no timer
+        scramble, no running back into frame.
+      </p>
+
+      <div class="mt-9 flex flex-col items-center gap-4">
+        <AppStoreBadge />
+        <p class="text-sm text-muted">
+          <span class="text-accent-soft">★ 4.4</span> · 792 ratings · Free · iPhone
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice -->
+  <section class="mx-auto max-w-5xl px-5 py-20">
+    <div class="grid items-center gap-12 md:grid-cols-2">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+          Say it
+        </p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+          Just tell it what to do
+        </h2>
+        <ul class="mt-7 space-y-3 text-lg">
+          <li><span class="text-accent-soft">“Photo”</span> — take a picture</li>
+          <li>
+            <span class="text-accent-soft">“Video” / “Stop”</span> — start and stop
+            recording
+          </li>
+          <li><span class="text-accent-soft">“Reverse”</span> — flip the camera</li>
+          <li>
+            <span class="text-accent-soft">“Flash on” / “Flash off”</span>
+          </li>
+        </ul>
+        <p class="mt-7 text-muted">
+          Every phrase is yours to change in Settings. Speech recognition runs
+          entirely on your device — nothing is sent anywhere, and it works without
+          a connection.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <Image
+          src={shotVoice}
+          alt="Hey Camera viewfinder listening for a voice command"
+          widths={[320, 640]}
+          sizes="(min-width: 768px) 240px, 42vw"
+          class="w-full rounded-2xl"
+          loading="eager"
+        />
+        <Image
+          src={shotCommands}
+          alt="The voice command list in Hey Camera settings"
+          widths={[320, 640]}
+          sizes="(min-width: 768px) 240px, 42vw"
+          class="mt-8 w-full rounded-2xl"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gesture -->
+  <section class="border-y border-edge/60 bg-surface/40">
+    <div class="mx-auto max-w-5xl px-5 py-20">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="md:order-2">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+            Show it
+          </p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            Hold up a hand
+          </h2>
+          <p class="mt-6 text-lg text-muted">
+            Show the camera an open palm and it fires. Perfect for group photos,
+            tripod shots, and anything more than an arm's length away.
+          </p>
+        </div>
+
+        <div class="md:order-1 flex justify-center">
+          <Image
+            src={shotGesture}
+            alt="Hey Camera detecting an open palm to trigger the shutter"
+            widths={[320, 640]}
+            sizes="(min-width: 768px) 300px, 65vw"
+            class="w-full max-w-[300px] rounded-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Camera features -->
+  <section class="mx-auto max-w-5xl px-5 py-20">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+        And a serious camera, too
+      </p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+        Hands-free isn't the only trick
+      </h2>
+      <p class="mt-5 text-lg text-muted">
+        Every camera option lives in Settings, and each one only appears when the
+        camera you're on can actually do it.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-10 md:grid-cols-[1fr_300px] md:items-start">
+      <dl class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+        {
+          cameraFeatures.map((feature) => (
+            <div>
+              <dt class="font-semibold">{feature.title}</dt>
+              <dd class="mt-1.5 text-muted">{feature.body}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <Image
+        src={shotVideo}
+        alt="Video settings in Hey Camera showing resolution and frame rate options"
+        widths={[320, 640]}
+        sizes="(min-width: 768px) 300px, 65vw"
+        class="mx-auto w-full max-w-[300px] rounded-2xl"
+      />
+    </div>
+  </section>
+
+  <!-- Library -->
+  <section class="border-y border-edge/60 bg-surface/40">
+    <div class="mx-auto max-w-5xl px-5 py-20">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+            Your media
+          </p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            Everything you shoot, right there
+          </h2>
+          <p class="mt-6 text-lg text-muted">
+            Browse, preview and share everything you capture without leaving the
+            app.
+          </p>
+        </div>
+
+        <div class="flex justify-center">
+          <Image
+            src={shotLibrary}
+            alt="The Hey Camera media library showing captured photos and videos"
+            widths={[320, 640]}
+            sizes="(min-width: 768px) 300px, 65vw"
+            class="w-full max-w-[300px] rounded-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pro + CTA -->
+  <section class="mx-auto max-w-3xl px-5 py-20 text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Hey Camera Pro</h2>
+    <p class="mt-5 text-lg text-muted">
+      New users get a set of free voice and gesture commands to try. Pro removes
+      the limit, as an annual subscription or a one-time lifetime purchase.
+    </p>
+
+    <div class="mt-9 flex justify-center">
+      <AppStoreBadge />
+    </div>
+
+    <p class="mt-8 text-sm text-muted">
+      Questions? <a
+        href={withBase('/support')}
+        class="text-accent-soft underline underline-offset-4 hover:text-body">Get in touch</a
+      >.
+    </p>
+  </section>
+</Base>

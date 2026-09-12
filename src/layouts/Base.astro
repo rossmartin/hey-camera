@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import { withBase, APP_STORE_URL } from '../lib/url';
+import icon from '../assets/icon.png';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(withBase('/og.png'), Astro.site);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href={withBase('/favicon.png')} />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <meta name="theme-color" content="#08090c" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Hey Camera" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-edge/60">
+      <nav
+        class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-4"
+        aria-label="Main"
+      >
+        <a
+          href={withBase('/')}
+          class="flex shrink-0 items-center gap-2.5 whitespace-nowrap font-semibold tracking-tight hover:text-white"
+        >
+          <Image
+            src={icon}
+            alt=""
+            width={28}
+            height={28}
+            densities={[2, 3]}
+            class="rounded-[7px]"
+          />
+          Hey Camera
+        </a>
+        <div class="flex items-center gap-4 text-sm text-muted sm:gap-5">
+          <a href={withBase('/support')} class="hover:text-body">Support</a>
+          <a href={withBase('/privacy')} class="hover:text-body">Privacy</a>
+          <a
+            href={APP_STORE_URL}
+            class="hidden whitespace-nowrap rounded-full bg-accent px-3.5 py-1.5 font-medium text-ink hover:bg-accent-soft sm:inline-block"
+          >
+            Get the app
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-edge/60 mt-24">
+      <div
+        class="mx-auto flex max-w-5xl flex-col gap-3 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p>&copy; {new Date().getFullYear()} Hey Camera</p>
+        <div class="flex flex-wrap gap-x-5 gap-y-2">
+          <a href={withBase('/support')} class="hover:text-body">Support</a>
+          <a href={withBase('/privacy')} class="hover:text-body">Privacy</a>
+          <a href={APP_STORE_URL} class="hover:text-body">App Store</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
