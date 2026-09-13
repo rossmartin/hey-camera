@@ -2,13 +2,52 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
-import { withBase } from '../lib/url';
+import { withBase, APP_STORE_URL } from '../lib/url';
 import icon from '../assets/icon.png';
 import shotVoice from '../assets/screenshots/01-voice.png';
 import shotGesture from '../assets/screenshots/02-gesture.png';
 import shotCommands from '../assets/screenshots/03-voice-commands.png';
 import shotVideo from '../assets/screenshots/04-video-settings.png';
 import shotLibrary from '../assets/screenshots/05-library.png';
+
+const appSchema = {
+  '@type': 'MobileApplication',
+  '@id': `${new URL(withBase('/'), Astro.site)}#app`,
+  name: 'Hey Camera',
+  description:
+    'A hands-free iPhone camera. Trigger the shutter with a voice command or an open-palm gesture, with on-device speech recognition, 4K60, HDR and full manual control.',
+  applicationCategory: 'PhotoApplication',
+  operatingSystem: 'iOS',
+  url: APP_STORE_URL,
+  installUrl: APP_STORE_URL,
+  featureList: [
+    'Voice-controlled shutter with customizable commands',
+    'Open-palm gesture capture',
+    'On-device speech recognition that works offline',
+    '4K video at 60 frames per second',
+    'HDR photo and video',
+    'Video stabilization modes',
+    'Manual focus, zoom and exposure control',
+    'Self-timer with flashing countdown',
+    'Built-in media library',
+  ],
+  screenshot: [shotVoice, shotGesture, shotCommands, shotVideo, shotLibrary].map(
+    (shot) => new URL(shot.src, Astro.site).href
+  ),
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.4',
+    ratingCount: '792',
+    bestRating: '5',
+    worstRating: '1',
+  },
+};
 
 const cameraFeatures = [
   {
@@ -49,6 +88,7 @@ const cameraFeatures = [
 <Base
   title="Hey Camera — the hands-free camera for iPhone"
   description="Control your iPhone camera with your voice or a hand gesture. On-device speech recognition, palm-gesture capture, 4K60, HDR and full manual control."
+  schema={appSchema}
 >
   <!-- Hero -->
   <section class="relative overflow-hidden">
@@ -77,8 +117,8 @@ const cameraFeatures = [
       </h1>
 
       <p class="mx-auto mt-5 max-w-xl text-balance text-lg text-muted sm:text-xl">
-        Control it with your voice or a simple hand gesture. No tapping, no timer
-        scramble, no running back into frame.
+        Control your camera with your voice or a simple hand gesture. No tapping,
+        no timer scramble, no running back into frame.
       </p>
 
       <div class="mt-9 flex flex-col items-center gap-4">
@@ -95,7 +135,7 @@ const cameraFeatures = [
     <div class="grid items-center gap-12 md:grid-cols-2">
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-          Say it
+          Voice control
         </p>
         <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
           Just tell it what to do
@@ -144,14 +184,15 @@ const cameraFeatures = [
       <div class="grid items-center gap-12 md:grid-cols-2">
         <div class="md:order-2">
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-            Show it
+            Gesture control
           </p>
           <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
             Hold up a hand
           </h2>
           <p class="mt-6 text-lg text-muted">
-            Show the camera an open palm and it fires. Perfect for group photos,
-            tripod shots, and anything more than an arm's length away.
+            Show the camera an open palm and it fires. Take a photo with a hand
+            gesture from across the room — perfect for group photos, tripod
+            shots, and anything more than an arm's length away.
           </p>
         </div>
 
