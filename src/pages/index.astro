@@ -3,12 +3,15 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import AppStoreBadge from '../components/AppStoreBadge.astro';
 import { withBase, APP_STORE_URL } from '../lib/url';
+import { getAppRating, formatRatingCount } from '../lib/rating';
 import icon from '../assets/icon.png';
 import shotVoice from '../assets/screenshots/01-voice.png';
 import shotGesture from '../assets/screenshots/02-gesture.png';
 import shotCommands from '../assets/screenshots/03-voice-commands.png';
 import shotVideo from '../assets/screenshots/04-video-settings.png';
 import shotLibrary from '../assets/screenshots/05-library.png';
+
+const rating = await getAppRating();
 
 const appSchema = {
   '@type': 'MobileApplication',
@@ -42,8 +45,8 @@ const appSchema = {
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '4.5',
-    ratingCount: '1588',
+    ratingValue: rating.value,
+    ratingCount: String(rating.count),
     bestRating: '5',
     worstRating: '1',
   },
@@ -124,7 +127,7 @@ const cameraFeatures = [
       <div class="mt-9 flex flex-col items-center gap-4">
         <AppStoreBadge />
         <p class="text-sm text-muted">
-          <span class="text-accent-soft">★ 4.5</span> · 1.5K ratings · Free · iPhone
+          <span class="text-accent-soft">★ {rating.value}</span> · {formatRatingCount(rating.count)} ratings · Free · iPhone
         </p>
       </div>
     </div>

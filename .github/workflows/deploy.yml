@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Rebuild weekly so the App Store rating fetched at build time stays current.
+  schedule:
+    - cron: '0 10 * * 1'
 
 permissions:
   contents: read
