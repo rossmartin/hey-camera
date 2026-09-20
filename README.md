@@ -19,8 +19,8 @@ npm run preview  # serve the built site
 
 ## Pages
 
-| Path       | Purpose                                            |
-| ---------- | -------------------------------------------------- |
+| Path       | Purpose                                             |
+| ---------- | --------------------------------------------------- |
 | `/`        | Landing page                                        |
 | `/support` | **App Store Connect support URL** — contact details |
 | `/privacy` | **App Store Connect privacy policy URL**            |
